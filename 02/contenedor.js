@@ -11,7 +11,6 @@ class Contenedor{
         let id = 1;
         try{
             if(!fs.existsSync(`./${this.archivo}`)){
-                //id = obj.id;
                 let objetoArchivoVacio = {
                     'id': id,
                     'title': obj.title,
@@ -43,7 +42,7 @@ class Contenedor{
         }catch(err){
             console.log(err);
         }
-        return console.log(`El id asignado es: ${id}`);
+        return (`El id asignado es: ${id}`);
 
     }
 
@@ -56,7 +55,7 @@ class Contenedor{
             const buscarObjetoPorId = await contenidoParse.find(producto => producto.id === id);
 
             if (buscarObjetoPorId === undefined){
-                retorno = 'NULL'
+                retorno = null;
             }else{
                 retorno = buscarObjetoPorId;
             }
@@ -64,7 +63,7 @@ class Contenedor{
             console.log(error)
         }
 
-        return console.log(retorno);
+        return retorno;
     }
 
     async getAll(){
@@ -75,7 +74,7 @@ class Contenedor{
         } catch (error) {
             console.log(error)
         }
-        return console.log(contenidoParse);
+        return contenidoParse;
     }
 
     async deleteById(id){
