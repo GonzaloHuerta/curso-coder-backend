@@ -1,0 +1,26 @@
+[
+    {
+            "id":1,
+        "title":"Pc",
+        "price":600,
+        "thumbnail":"imagenDePc"
+    },
+    {
+        "id":2,
+        "title":"iPhone",
+        "price":1200,
+        "thumbnail":"imagenDeiphone"
+    },
+    {
+        "id":3,
+        "title":"Macbook",
+        "price":2000,
+        "thumbnail":"imagenDeMacbook"
+    },
+    {
+        "id":4,
+        "title":"Apple Watch",
+        "price":1500,
+        "thumbnail":"imagenDeApplewatch"
+    }
+]
