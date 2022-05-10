@@ -3,12 +3,11 @@ const Producto = require('../productos');
 
 const productoDePrueba = new Producto();
 
+
+// Ejecuto metodos para arrancar con 3 productos. En el caso de querer arrancar con 0 se pueden comentar
 productoDePrueba.guardarProducto({title: 'Test Product', price: 500, thumbnail: 'urlDePrueba'});
 productoDePrueba.guardarProducto({title: 'Test Product 2', price: 500, thumbnail: 'urlDePrueba'});
 productoDePrueba.guardarProducto({title: 'Test Product 3', price: 500, thumbnail: 'urlDePrueba'});
-//console.log(productoDePrueba.obtenerTodosLosProductos())
-//console.log(productoDePrueba.obtenerProductoPorId(2))
-console.log(productoDePrueba.modificarProducto(1, 'Nuevo Title', 'Nuevo precio', 'Nuevo thumb'));
 
 const router = Router();
 
