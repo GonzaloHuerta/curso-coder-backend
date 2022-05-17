@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="mt-4 mb-4">Listado de productos</h1>
+        <a href="/" class="btn btn-primary mb-4">Agregar nuevo producto</a>
+    
+        <% if(productos.length > 0) {%>
+            <table class="table">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+                <% productos.forEach(producto=>{ %>
+                    <tr>
+                        <td><%=producto.title %></td>
+                        <td><%=producto.price %></td>
+                        <td><img src="<%=producto.thumbnail %>" alt="Imagen del producto" width="100" height="100"/></td>
+                    </tr>
+                <% }) %>   
+    
+            </table>
+    
+        <% } else{ %>
+            <div class="alert alert-warning" role="alert">
+                No hay productos para mostrar
+            </div>
+        <% } %> 
+    </div>
+
+</body>
+</html>
+
+

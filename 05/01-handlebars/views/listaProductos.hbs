@@ -1,0 +1,24 @@
+<h1 class="mt-4 mb-4">Listado de productos</h1>
+<a href="/" class="btn btn-primary mb-4">Agregar nuevo producto</a>
+
+{{#if productos}}
+    <table class="table">
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+        </tr>
+            {{#each productos}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.price}}</td>
+                <td><img src="{{this.thumbnail}}" alt="Imagen del producto" width="100" height="100"/></td>
+            </tr>
+        {{/each}}  
+
+    </table>
+{{else}}
+    <div class="alert alert-warning" role="alert">
+        No hay productos para mostrar
+    </div>
+{{/if}}

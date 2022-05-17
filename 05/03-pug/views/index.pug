@@ -1,0 +1,16 @@
+extends main 
+
+block formulario
+    div.row
+        if productoAgregado
+            div.alert.alert-success.mt-4 Producto agregado con éxito
+        div.col
+        div.col
+            h1.mt-2.mb-4 Agregar producto
+            form(action='/productos', method='POST')
+                input(class='form-control', type='text', name='title', placeholder='Nombre del producto')
+                input(class='form-control mt-2', type='number', name='price', placeholder='Precio')
+                input(class='form-control mt-2', type='text', name='thumbnail', placeholder='URL de la imagen')
+                button(class='btn btn-primary mt-2' type='submit') Agregar producto
+            a(class='btn btn-secondary' href='/productos') Ir al listado de productos
+        div.col

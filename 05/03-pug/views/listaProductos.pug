@@ -1,0 +1,23 @@
+extends index.pug
+
+block formulario 
+
+block listaDeProductos
+    div.container.mt4
+        h1.mt-4.mb-4 Listado de productos
+        a(href='/', class="btn btn-primary mb-4") Agregar nuevo producto
+        
+        table.table
+            tr
+                th Nombre 
+                th Precio 
+                th Imagen 
+            each producto in productos
+                tr
+                    td= producto.title
+                    td= producto.price 
+                    td
+                        img(src=producto.thumbnail, width="100", height="100")
+            else 
+                div.alert.alert-warning No hay productos para mostrar
+
