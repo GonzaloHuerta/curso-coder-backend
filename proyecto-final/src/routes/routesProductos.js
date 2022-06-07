@@ -4,7 +4,7 @@ import Api from '../apiClass.js';
 const api = new Api('/db/productos.json');
 const router = Router();
 
-const isAdmin = false;
+const isAdmin = true;
 
 //middleware
 function checkIfIsAdmin(req, res, next){
@@ -30,6 +30,12 @@ router.get('/:id', async(req, res)=>{
 //b
 router.post('/', checkIfIsAdmin, async(req, res)=>{
     const obj = req.body;
+    for(let key in obj){
+        if(obj[key] == ''){
+            res.json({error: "Debe completar todos los campos para la creacion del producto"})
+            return;
+        }
+    }
     const product = await api.create(obj);
     res.json(product);
 })

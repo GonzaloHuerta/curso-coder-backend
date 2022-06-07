@@ -5,17 +5,31 @@ const cartApi = new Api('/db/carrito.json');
 const productsApi = new Api('/db/productos.json');
 const router = Router();
 
-router.get('/', async(req, res)=>{
-    const cart = await cartApi.getAll();
-    res.json(cart);
-})
-
-
 //a
 router.post('/', async(req, res)=>{
     const obj = req.body;
-    const cart = await cartApi.create(obj);
-    res.json(cart);
+    const {productos} = req.body
+    const productosAAgregar = [];
+    let existeProducto = true;
+
+    productos.forEach(async id => {
+        if(await productsApi.getById(id) == null){
+            existeProducto = false;
+            return;
+        }
+        productosAAgregar.push(await productsApi.getById(id));
+        obj.productos = productosAAgregar;
+    });
+    
+    setTimeout(async() => {
+        if(existeProducto){
+            const cart = await cartApi.create(obj);
+            res.json(cart);
+        }else{
+            res.json({error: 'Uno o más productos que intenta agregar al carrito no existen'})
+        }
+    }, 1000);
+    
 })
 
 //b
