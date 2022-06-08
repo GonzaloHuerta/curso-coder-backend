@@ -45,12 +45,35 @@ router.get('/:id/productos', async(req, res)=>{
     res.json(productsCart);
 })
 
-//d -- Esta ruta la modifiqué para que además de id del producto tome el id del carrito, sino no sabía a que carrito debía agregar el producto
-router.post('/:id_cart/productos/:id_prod', async(req, res)=>{
-    const {id_cart, id_prod} = req.params;
-    const product = await productsApi.getById(id_prod);
-    const addProduct = await cartApi.addProductToCart(product, id_cart);
-    res.json(addProduct);
+//d
+router.post('/:id_cart/productos', async(req, res)=>{
+    const {id_cart} = req.params;
+    const {productos} = req.body
+    let productosAAgregar = [];
+    let error = false;
+    const cart = await cartApi.getById(id_cart);
+
+    if(cart==null){
+        res.json({error: 'No existe carrito con el id indicado'})
+        return;
+    }
+
+    productos.forEach(async id => {
+        if(await productsApi.getById(id)==null){
+            error = true;
+            return;
+        }
+        productosAAgregar.push(await productsApi.getById(id))
+    });
+
+    setTimeout(async() => {
+        if(!error){
+            const addProducts = await cartApi.addProductsToCart(productosAAgregar, id_cart);
+            res.json(addProducts);
+        }else{
+            res.json({error: 'Uno o más productos que intenta agregar al carrito no existen'})
+        }
+    }, 1000);
 })
 
 //e

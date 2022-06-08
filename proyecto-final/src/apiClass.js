@@ -98,13 +98,15 @@ class Api{
             console.log(error)
         }
     }
-
-    async addProductToCart(product, cartId){
+    
+    async addProductsToCart(products, cartId){
         try {
             let todos = await this.getAll();
             let nuevoContenido = todos.map((item, index)=>{
                 if(item.id == cartId){
-                    item.productos.push(product)
+                    products.forEach(product => {
+                        item.productos.push(product)
+                    });
                 }
                 return item;
             })

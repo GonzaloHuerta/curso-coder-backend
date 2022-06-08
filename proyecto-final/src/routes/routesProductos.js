@@ -30,6 +30,14 @@ router.get('/:id', async(req, res)=>{
 //b
 router.post('/', checkIfIsAdmin, async(req, res)=>{
     const obj = req.body;
+    
+    if(obj.nombre==undefined || obj.descripcion==undefined || obj.codigo==undefined || 
+        obj.foto==undefined || obj.precio==undefined || obj.stock ==undefined)
+    {
+        res.json({error: "No se puede agregar un objeto vacío"})
+        return;
+    }
+    
     for(let key in obj){
         if(obj[key] == ''){
             res.json({error: "Debe completar todos los campos para la creacion del producto"})
