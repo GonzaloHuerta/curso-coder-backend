@@ -1,7 +1,8 @@
 import {Router} from 'express';
-import Api from '../apiClass.js';
+//import ProductosDaoArchivo from '../daos/productos/ProductosDaoArchivo.js';
+import {productosDao as api} from '../daos/index.js';
 
-const api = new Api('/db/productos.json');
+//const api = new ProductosDaoArchivo();
 const router = Router();
 
 const isAdmin = true;

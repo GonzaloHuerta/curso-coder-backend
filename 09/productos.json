@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "62ab72dfe20ba66b337f1078"
+  },
+  "title": "iPhone",
+  "price": 4500,
+  "thumbnail": "urliphone",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "62ab72dfe20ba66b337f1079"
+  },
+  "title": "iPad",
+  "price": 3500,
+  "thumbnail": "urlipad",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62ab72dfe20ba66b337f107a"
+  },
+  "title": "Airpods",
+  "price": 2345,
+  "thumbnail": "urlairpods",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62ab72dfe20ba66b337f107b"
+  },
+  "title": "Macbook",
+  "price": 5000,
+  "thumbnail": "urlmac",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "62ab72dfe20ba66b337f107c"
+  },
+  "title": "Monitor",
+  "price": 2478,
+  "thumbnail": "urlmonitor",
+  "stock": 100
+}]

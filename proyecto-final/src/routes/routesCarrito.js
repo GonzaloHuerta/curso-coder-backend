@@ -1,8 +1,7 @@
 import {Router} from 'express';
-import Api from '../apiClass.js';
+import {productosDao as productsApi} from '../daos/index.js';
+import {carritosDao as cartApi} from '../daos/index.js';
 
-const cartApi = new Api('/db/carrito.json');
-const productsApi = new Api('/db/productos.json');
 const router = Router();
 
 //a
@@ -11,7 +10,7 @@ router.post('/', async(req, res)=>{
     const {productos} = req.body
     const productosAAgregar = [];
     let existeProducto = true;
-
+console.log(productos)
     productos.forEach(async id => {
         if(await productsApi.getById(id) == null){
             existeProducto = false;
@@ -41,7 +40,7 @@ router.delete('/:id', async(req, res)=>{
 //c
 router.get('/:id/productos', async(req, res)=>{
     const {id} = req.params;
-    const productsCart = await cartApi.getProductsCart(id);
+    const productsCart = await cartApi.getById(id);
     res.json(productsCart);
 })
 
@@ -79,7 +78,7 @@ router.post('/:id_cart/productos', async(req, res)=>{
 //e
 router.delete('/:id_cart/productos/:id_prod', async(req, res)=>{
     const {id_cart, id_prod} = req.params;
-    const deleteProduct = await cartApi.deleteProductToCart(id_cart, id_prod);
+    const deleteProduct = await cartApi.deleteProductsToCart(id_cart, id_prod);
     res.json(deleteProduct);
 })
 
